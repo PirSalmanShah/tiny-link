@@ -25,7 +25,7 @@ const [mounted, setMounted] = useState(false)
     
   return (
     <>
-    <button  onClick={()=>{toggleTheme()}}>{theme==="light"? <Image src='./dark.svg' alt='dark-mood'height={20} width={20}/>:<Image src='/light.svg' alt='light-mood'height={20} width={20}/>}</button>
+    <button className='px-3'  onClick={()=>{toggleTheme()}}>{theme==="light"? <Image src='./dark.svg' alt='dark-mood'height={20} width={20}/>:<Image src='/light.svg' alt='light-mood'height={20} width={20}/>}</button>
     
     </>
   )

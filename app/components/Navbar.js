@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className='flex  backdrop-blur-2xl bg-black/5 dark:bg-white/5 justify-around items-center w-[80%] mx-auto rounded-full mt-3 shadow-2xl shadow-black/50 dark:shadow-white/50 text-black dark:text-white'>
+      <nav className='flex  backdrop-blur-2xl bg-black/5 dark:bg-white/5 justify-around items-center w-[80%] mx-auto rounded-full mt-3 shadow-2xl shadow-black/50 dark:shadow-white/50 text-black dark:text-white px-2'>
         <Link href={"/"}>
         <Image
           src="/tiny-link.png"
@@ -30,8 +30,9 @@ const Navbar = () => {
           className='dark:invert-100'
         /></Link>
         <ul className='flex gap-3 items-center'>
-          <li>Home</li>
-          <li>About</li>
+          <Link href={"/"}><li className='text-[9px] sm:text-[14px]'>Home</li></Link>
+          <Link href={"/about"}><li className='text-[9px] sm:text-[14px]'>About</li></Link>
+          
           <li>{!session && <Button onClick={() => { signIn("google") }} >Login</Button>}
 
             {session && <DropdownMenu>
