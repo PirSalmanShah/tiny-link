@@ -21,16 +21,17 @@ const Navbar = () => {
   return (
     <div>
       <nav className='flex  backdrop-blur-2xl bg-black/5 dark:bg-white/5 justify-around items-center w-[80%] mx-auto rounded-full mt-3 shadow-2xl shadow-black/50 dark:shadow-white/50 text-black dark:text-white'>
+        <Link href={"/"}>
         <Image
           src="/tiny-link.png"
           alt="Logo"
           width={200}
           height={200}
           className='dark:invert-100'
-        />
+        /></Link>
         <ul className='flex gap-3 items-center'>
           <li>Home</li>
-          <li>Home</li>
+          <li>About</li>
           <li>{!session && <Button onClick={() => { signIn("google") }} >Login</Button>}
 
             {session && <DropdownMenu>
