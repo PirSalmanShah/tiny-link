@@ -23,7 +23,7 @@ const Page = () => {
 
     const getList = async () => {
 
-            let response = await fetch("http://localhost:3000/api/generate/")
+            let response = await fetch("https://tiny-link-theta.vercel.app/api/generate/")
             let data = await response.json()
             console.log(data)
             setlistdata(data)
@@ -45,7 +45,7 @@ const Page = () => {
     }
     const deleteRecord = async (e) => {
         const code = e.code
-        let res = await fetch(`http://localhost:3000/api/delete/${code}`)
+        let res = await fetch(`https://tiny-link-theta.vercel.app/api/delete/${code}`)
         let message = await res.json()
         toast("Link Deleted")
         getList()

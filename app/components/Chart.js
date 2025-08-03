@@ -9,7 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 const MyLineChart = () => {
 const [bar, setBar] = useState([])
     const getData= async()=>{
-        let resbar = await fetch("http://localhost:3000/api/dashboard/chart/")
+        let resbar = await fetch("https://tiny-link-theta.vercel.app/api/dashboard/chart/")
     let bardata = await resbar.json()
     setBar(bardata.bar)
     }

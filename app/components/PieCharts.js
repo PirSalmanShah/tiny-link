@@ -3,19 +3,11 @@ import React, { useState, useEffect } from 'react'
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
 
-const data01 = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-  { name: 'Group E', value: 278 },
-  { name: 'Group F', value: 189 },
-];
 
 const PieCharts = () => {
   const [pie, setPie] = useState([])
   const getData = async () => {
-    let res = await fetch("http://localhost:3000/api/dashboard/piechart/")
+    let res = await fetch("https://tiny-link-theta.vercel.app/api/dashboard/piechart/")
     let pieData = await res.json()
     // console.log(pieData)
     setPie(pieData.pie)

@@ -8,7 +8,7 @@ export default function Home() {
   const handleSubmit = async () => {
     const inputData = refLink.current.value;
     refLink.current.value = ''
-    const response = await fetch("http://localhost:3000/api/generate/", {
+    const response = await fetch("https://tiny-link-theta.vercel.app/api/generate/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

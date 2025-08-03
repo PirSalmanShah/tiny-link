@@ -34,12 +34,12 @@ const Page = () => {
   
   const getList = async () => {
 
-    let res = await fetch("http://localhost:3000/api/dashboard/geolocation/")
+    let res = await fetch("https://tiny-link-theta.vercel.app/api/dashboard/geolocation/")
     let geo = await res.json()
     setLocation(geo.geolocation)
     setcode(geo.code)
     setCurrentLink(geo.code[0])
-    let response = await fetch("http://localhost:3000/api/dashboard/highstats/")
+    let response = await fetch("https://tiny-link-theta.vercel.app/api/dashboard/highstats/")
     let data = await response.json()
     setHighstats(data)
     // console.log(geo)
