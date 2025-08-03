@@ -30,7 +30,7 @@ const Page = () => {
         }
 
     useEffect(() => {
-        if (status == "unauthenticated"){
+        if (status == "authenticated"){
 
             getList()
         }
