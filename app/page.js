@@ -1,103 +1,62 @@
+"use client"
 import Image from "next/image";
-
+import { useRef,useState } from "react";
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const refLink = useRef("")
+  const [shortenUrl, setShortenUrl] = useState('')
+  const [originalUrl, setOriginalUrl] = useState('')
+  const handleSubmit = async () => {
+    const inputData = refLink.current.value;
+    refLink.current.value = ''
+    const response = await fetch("http://localhost:3000/api/generate/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      body: JSON.stringify({ url: inputData }),
+
+    });
+    const data = await response.json()
+    setShortenUrl(data.shortenUrl)
+    setOriginalUrl(data.originalUrl)
+  }
+  return (
+    <>
+      <div className="text-center mt-16 w-[80%] mx-auto">
+        <h1 className="font-black text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-black/50 to-black/15 dark: dark:from-white/50 dark:to-white/15 inline-block">Shorten your looong Urls</h1>
+        <p className="mt-2 text-xl font-medium text-black/50 dark:text-white/50 wrap-normal w-[80%] mx-auto">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
+      </div>
+
+      <div className="mt-8 w-[80%] mx-auto relative">
+        <div className="flex justify-center items-center">
+          <input ref={refLink} type="text" placeholder="Enter your link" name="link" id="link" className="text-black/50  dark:text-white/50 bg-transparent appearance-none rounded-full border-1 border-netural w-full p-2 pr-35 outline-none transition-all duration-300 focus:shadow-2xl focus:border-black/50 dark:focus:border-white/50 dark:focus:shadow-white/50 focus:shadow-black/50" />
+
+
+          <button onClick={() => { handleSubmit() }} className="absolute right-0 z-10 text-black/50 dark:text-white/50 bg-transparent appearance-none rounded-full border-1 border-netural w-fit p-2 outline-none transition-all duration-300 hover:shadow-2xl hover:border-black/50 dark:hover:border-white/50 dark:hover:shadow-white/50 hover:shadow-black/50">Get shorten Link</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+      </div>
+
+      <div className="mt-8 w-[80%] mx-auto ">
+        {(shortenUrl)&& <table className="table-fixed w-full text-black/50 dark:text-white/50">
+          <thead>
+            <tr>
+
+              <th className="text-left">Shorten link</th>
+              <th className="text-left">Original link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{shortenUrl}</td>
+              <td className="overflow-x-scroll whitespace-nowrap no-scrollbar">{originalUrl}</td>
+            </tr>
+          </tbody>
+
+        </table>}
+      </div>
+
+    </>
   );
 }
