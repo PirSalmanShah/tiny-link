@@ -101,14 +101,14 @@ const Page = () => {
                 <div className="backdrop-blur-2xl bg-black/5 dark:bg-white/5 rounded-2xl p-6 shadow-2xl shadow-black/50 dark:shadow-white/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-black/70 dark:hover:shadow-white/70">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="p-2 backdrop-blur-2xl bg-black/10 dark:bg-white/10 rounded-xl text-black/70 dark:text-white/70 group-hover:bg-black/20 dark:group-hover:bg-white/20 transition-all duration-300">
-                      {`${feature.icon}`}
+                      {feature.icon}
                     </div>
                     <h3 className="text-xl font-semibold text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white transition-colors duration-200">
-                      {`${feature.title}`}
+                      {feature.title}
                     </h3>
                   </div>
                   <p className="text-black/50 dark:text-white/50 leading-relaxed">
-                    {`${feature.description}`}
+                    {feature.description}
                   </p>
                 </div>
               </div>
@@ -127,14 +127,14 @@ const Page = () => {
                 <div className="backdrop-blur-2xl bg-black/5 dark:bg-white/5 rounded-2xl p-6 text-center shadow-2xl shadow-black/50 dark:shadow-white/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-black/70 dark:hover:shadow-white/70">
                   <div className="flex justify-center mb-3">
                     <div className="p-3 backdrop-blur-2xl bg-black/10 dark:bg-white/10 rounded-xl text-black/70 dark:text-white/70 group-hover:bg-black/20 dark:group-hover:bg-white/20 transition-all duration-300">
-                      {`${stat.icon}`}
+                      {stat.icon}
                     </div>
                   </div>
                   <div className="text-3xl font-black text-black/70 dark:text-white/70 mb-2">
-                    {`${stat.value}`}
+                    {stat.value}
                   </div>
                   <div className="text-black/50 dark:text-white/50 font-medium">
-                    {`${stat.label}`}
+                    {stat.label}
                   </div>
                 </div>
               </div>
